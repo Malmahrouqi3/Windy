@@ -1,0 +1,20 @@
+{
+    "name": "windy-map",
+    "version": "1.0.0",
+    "description": "Windy Map Integration",
+    "dependencies": {
+        "leaflet": "^1.9.4"
+    },
+    "scripts": {
+        "start": "serve"
+    },
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.gatech.edu/malmahrouqi3/Windy.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs"
+}

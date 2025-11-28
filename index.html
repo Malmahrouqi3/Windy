@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Windy Map Integration</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css" />
+    
+    <!-- Windy API (updated to latest version) -->
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #windy {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="windy"></div>
+    
+    <script>
+        // Wait for window load to ensure all scripts are loaded
+        window.addEventListener('load', () => {
+            // Check if windyInit is available
+            if (typeof windyInit === 'undefined') {
+                console.error('Windy API not loaded properly');
+                return;
+            }
+
+            const options = {
+                key: 'dXlVliG8iQ2bINn93u7itaYv3j5xL2Dx',
+                verbose: true,
+                lat: 33.7490,
+                lon: -84.3880,
+                zoom: 8
+            };
+
+            windyInit(options, windyAPI => {
+                const { map } = windyAPI;
+                
+                // Add Georgia Tech marker
+                L.marker([33.7756, -84.3963])
+                    .addTo(map)
+                    .bindPopup('Georgia Institute of Technology');
+            });
+        });
+    </script>
+</body>
+</html>
